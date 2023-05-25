@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class SpawnFood : MonoBehaviour
 {
-    [SerializeField] private GameObject Spawner;
-    void Start()
+    [SerializeField] private Transform spawner;
+    [SerializeField] private GameObject foodPrefab;
+
+    private void Update()
     {
-        
+        StartCoroutine(SpawnerFood());
     }
 
-    void Update()
+    private IEnumerator SpawnerFood()
     {
-        
+        Instantiate(foodPrefab, spawner.position, spawner.rotation);
+        yield return new WaitForSeconds(5f);
     }
+
 }
