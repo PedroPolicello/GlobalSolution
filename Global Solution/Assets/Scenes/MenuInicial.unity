@@ -305,10 +305,10 @@ RectTransform:
   m_Father: {fileID: 248211931}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 2.3533936, y: -174.7347}
-  m_SizeDelta: {x: 340.6274, y: 281.6926}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 2.3533936, y: 1.2653198}
+  m_SizeDelta: {x: -369.3726, y: -70.3074}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &186201188
 MonoBehaviour:
@@ -634,10 +634,10 @@ RectTransform:
   m_Father: {fileID: 248211931}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 2.3536072, y: -174.7345}
-  m_SizeDelta: {x: 340.63, y: 281.693}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 2.3536377, y: 1.2655029}
+  m_SizeDelta: {x: -369.37, y: -70.30701}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &352686893
 MonoBehaviour:
@@ -712,10 +712,10 @@ RectTransform:
   m_Father: {fileID: 248211931}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 2.3536072, y: -174.7345}
-  m_SizeDelta: {x: 340.63, y: 281.693}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 2.3536377, y: 1.2655029}
+  m_SizeDelta: {x: -369.37, y: -70.30701}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &526382981
 MonoBehaviour:
@@ -1589,7 +1589,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

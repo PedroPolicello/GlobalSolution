@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -13,12 +14,21 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private int jumpForce;
     private bool onFloor = true;
 
+    //Dash
+    private int normalSpeed;
+    private bool canDash = true;
+
+    //Singleton
+    public static PlayerScript instance;
+
 
     void Awake()
     {
+        instance = this;
         playerTransform = GetComponent<Transform>();
         playerRig = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
+        normalSpeed = speed;
     }
 
     void Update()
@@ -31,6 +41,11 @@ public class PlayerScript : MonoBehaviour
     {
         float moveX = Input.GetAxisRaw("Horizontal");
         playerTransform.Translate(new Vector3(moveX, 0, 0) * speed * Time.deltaTime);
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            StartCoroutine(Dash());
+        }
     }
 
     void PlayerJump()
@@ -42,13 +57,25 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    //COLLIDER
     private void OnCollisionEnter2D(Collision2D collision)
     {
         onFloor = true;
 
+        if (collision.gameObject.tag == "Food")
+        {
+            StartCoroutine(FlashSprite());
+            GameManager.instance.PlayerLife();
+        }
+    }
+
+    //TRIGGER
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.gameObject.tag == "Enemy")
         {
             StartCoroutine(FlashSprite());
+            GameManager.instance.PlayerLife();
         }
     }
 
@@ -62,4 +89,23 @@ public class PlayerScript : MonoBehaviour
             yield return new WaitForSeconds(.1f);
         }
     }
+
+    private IEnumerator Dash()
+    {
+        if (Input.GetButtonDown("Fire1") && canDash)
+        {
+            speed *= 2;
+            yield return new WaitForSeconds(.3f);
+            speed = normalSpeed;
+            canDash = false;
+            yield return new WaitForSeconds(5f);
+            canDash = true;
+        }
+    }
+
+    public Transform GetPlayerTransform()
+    {
+        return playerTransform;
+    }
+
 }

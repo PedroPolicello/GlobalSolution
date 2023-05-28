@@ -14,11 +14,13 @@ public class FoodScript : MonoBehaviour
         if (collision.gameObject.tag == "Box")
         {
             Destroy(gameObject);
+            GameManager.instance.PlayerScore();
         }
-
+        
         if (collision.gameObject.tag == "Floor")
         {
             Destroy(gameObject);
+            GameManager.instance.LoseScore();
         }
     }
 }

@@ -14,4 +14,9 @@ public class LoadScenes : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MenuInicial");
+    }
 }
