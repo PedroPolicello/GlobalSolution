@@ -8,6 +8,7 @@ TagManager:
   - Box
   - Floor
   - Food
+  - ONG
   layers:
   - Default
   - TransparentFX

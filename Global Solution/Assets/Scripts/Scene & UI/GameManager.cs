@@ -16,16 +16,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI lifeText;
 
     [Header("Scores")]
-    public int playerScore = 0;
-    public int ongScore = 0;
-    public int totalScore = 0;
-    public int currentLife;
-    public int maxLife;
+    private int playerScore = 0;
+    private int ongScore = 0;
+    private int totalScore = 0;
+    private int currentLife;
+    private int maxLife = 3;
 
     void Awake()
     {
         instance = this;
         currentLife = maxLife;
+        UpdatePlayerLife();
     }
 
 
@@ -35,9 +36,14 @@ public class GameManager : MonoBehaviour
         playerScore += 5;
         UpdateScore();
     }
+
     public void LoseScore()
     {
         playerScore -= 3;
+        if(playerScore <=0)
+        {
+            playerScore = 0;
+        }
         UpdateScore();
     }
 
@@ -52,7 +58,8 @@ public class GameManager : MonoBehaviour
     public void PlayerLife()
     {
         currentLife--;
-
+        UpdatePlayerLife();
+        
         if (currentLife <= 0)
         {
             SceneManager.LoadScene("GameOver");
