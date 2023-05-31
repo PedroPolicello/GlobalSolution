@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class SetSctive : MonoBehaviour
 {
-    [SerializeField] private GameObject spawner1;
-    [SerializeField] private GameObject spawner2;
+    [SerializeField] private GameObject spawner;
     void Start()
     {
         StartCoroutine(SetActive());
@@ -14,8 +13,7 @@ public class SetSctive : MonoBehaviour
     private IEnumerator SetActive()
     {
         yield return new WaitForSeconds(30f);
-        spawner1.SetActive(true);
-        yield return new WaitForSeconds(30f);
-        spawner2.SetActive(true);
+        spawner.SetActive(true);
+
     }
 }

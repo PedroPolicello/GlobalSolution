@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         currentLife = maxLife;
-        UpdatePlayerLife();
+        UpdatePlayerLife(currentLife);
     }
 
 
@@ -34,7 +34,12 @@ public class GameManager : MonoBehaviour
     public void PlayerScore()
     {
         playerScore += 5;
-        UpdateScore();
+        if (playerScore >= 30)
+        {
+            playerScore = 30;
+            print("YOU ARE FULL");
+        }
+        UpdatePlayerScore(playerScore);
     }
 
     public void LoseScore()
@@ -44,7 +49,7 @@ public class GameManager : MonoBehaviour
         {
             playerScore = 0;
         }
-        UpdateScore();
+        UpdatePlayerScore(playerScore);
     }
 
     public void GeralScore()
@@ -52,13 +57,14 @@ public class GameManager : MonoBehaviour
         totalScore = ongScore + playerScore;
         ongScore = totalScore;
         playerScore = 0;
-        UpdateTotalScore();
+        UpdateTotalScore(totalScore);
+        UpdatePlayerScore(playerScore);
     }
 
     public void PlayerLife()
     {
         currentLife--;
-        UpdatePlayerLife();
+        UpdatePlayerLife(currentLife);
         
         if (currentLife <= 0)
         {
@@ -68,17 +74,17 @@ public class GameManager : MonoBehaviour
 
 
     //Updates
-    public void UpdatePlayerLife()
+    public void UpdatePlayerLife(int currentLife)
     {
         lifeText.text = currentLife.ToString();
     }
 
-    public void UpdateScore()
+    public void UpdatePlayerScore(int  playerScore)
     {
         scoreText.text = playerScore.ToString();
     }
 
-    public void UpdateTotalScore()
+    public void UpdateTotalScore(int totalScore)
     {
         totalScoreText.text = totalScore.ToString();
     }

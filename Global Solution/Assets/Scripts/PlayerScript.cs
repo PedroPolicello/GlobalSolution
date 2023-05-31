@@ -15,7 +15,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private int jumpForce;
     private bool onFloor = true;
 
-    private float losePointDistance;
+    [SerializeField] private float losePointDistance;
 
     //Dash
     private int normalSpeed;
@@ -44,14 +44,6 @@ public class PlayerScript : MonoBehaviour
     {
         float moveX = Input.GetAxisRaw("Horizontal");
         playerTransform.Translate(new Vector3(moveX, 0, 0) * speed * Time.deltaTime);
-        if (moveX == -1)
-        {
-           playerTransform.Rotate(0, 180, 0);
-        }
-        else
-        {
-            playerTransform.Rotate(0, -180, 0);
-        }
 
         if (Input.GetButtonDown("Fire1"))
         {
@@ -72,9 +64,6 @@ public class PlayerScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         onFloor = true;
-        losePointDistance = Vector3.Distance(collision.gameObject.transform.position, playerTransform.position);
-        Debug.Log(losePointDistance);
-
         if (collision.gameObject.tag == "Food" && Vector3.Distance(collision.gameObject.transform.position, playerTransform.position) <= losePointDistance)
         {
             StartCoroutine(FlashSprite());
