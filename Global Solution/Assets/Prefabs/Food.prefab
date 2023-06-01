@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2519606510818607708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0032862946, y: 6.79, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -123,7 +123,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.3
 --- !u!114 &2519606510818607703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,8 +137,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minForce: 200
-  maxForce: 500
+  maxForce: 400
   foodSprites:
-  - {fileID: -180970123, guid: c6368a68ec2e86c4eb88a0b5fdf66cce, type: 3}
-  - {fileID: -302053628, guid: c6368a68ec2e86c4eb88a0b5fdf66cce, type: 3}
-  - {fileID: 1656595338, guid: c6368a68ec2e86c4eb88a0b5fdf66cce, type: 3}
+  - {fileID: 21300000, guid: 9ddf200254332714b83bca8208032450, type: 3}
+  - {fileID: 21300000, guid: a158e9f1b74a42a40ab712d98b2b715d, type: 3}
+  - {fileID: 21300000, guid: 689c302c71f623d42899bd15823b25e5, type: 3}
+  - {fileID: 21300000, guid: 2a95e9aecb5de684fa8f897985dbe5c5, type: 3}

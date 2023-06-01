@@ -5,6 +5,7 @@ using UnityEngine;
 public class SetSctive : MonoBehaviour
 {
     [SerializeField] private GameObject spawner;
+    [SerializeField] private float timer;
     void Start()
     {
         StartCoroutine(SetActive());
@@ -12,7 +13,7 @@ public class SetSctive : MonoBehaviour
 
     private IEnumerator SetActive()
     {
-        yield return new WaitForSeconds(30f);
+        yield return new WaitForSeconds(timer);
         spawner.SetActive(true);
 
     }

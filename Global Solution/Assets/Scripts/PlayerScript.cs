@@ -8,14 +8,16 @@ public class PlayerScript : MonoBehaviour
     private Transform playerTransform;
     private Rigidbody2D playerRig;
     private SpriteRenderer playerSprite;
+    private Animator playerAnimator;
     [SerializeField] private Transform foodTransform;
+    public bool flipX;
 
     [Header("Player Movement")]
     [SerializeField] private int speed;
     [SerializeField] private int jumpForce;
     private bool onFloor = true;
-
     [SerializeField] private float losePointDistance;
+
 
     //Dash
     private int normalSpeed;
@@ -31,6 +33,7 @@ public class PlayerScript : MonoBehaviour
         playerTransform = GetComponent<Transform>();
         playerRig = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
+        playerAnimator = GetComponent<Animator>();
         normalSpeed = speed;
     }
 
@@ -44,6 +47,16 @@ public class PlayerScript : MonoBehaviour
     {
         float moveX = Input.GetAxisRaw("Horizontal");
         playerTransform.Translate(new Vector3(moveX, 0, 0) * speed * Time.deltaTime);
+        playerAnimator.SetFloat("isWalking", Mathf.Abs(moveX));
+
+        if ( moveX > 0)
+        {
+            playerSprite.flipX=false;
+        }
+        else
+        {
+            playerSprite.flipX = true;
+        }
 
         if (Input.GetButtonDown("Fire1"))
         {
@@ -56,6 +69,7 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetButtonDown("Jump") && onFloor == true)
         {
             playerRig.AddForce(Vector2.up * jumpForce);
+            playerAnimator.SetBool("isJumping", true);
             onFloor = false;
         }
     }
@@ -64,7 +78,8 @@ public class PlayerScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         onFloor = true;
-        print(Vector3.Distance(collision.gameObject.transform.position, playerTransform.position));
+        playerAnimator.SetBool("isJumping", false);
+        //print(Vector3.Distance(collision.gameObject.transform.position, playerTransform.position));
         if (collision.gameObject.tag == "Food" && Vector3.Distance(collision.gameObject.transform.position, playerTransform.position) <= losePointDistance)
         {
             StartCoroutine(FlashSprite());
