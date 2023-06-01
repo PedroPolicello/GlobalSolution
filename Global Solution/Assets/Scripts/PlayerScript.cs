@@ -64,6 +64,7 @@ public class PlayerScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         onFloor = true;
+        print(Vector3.Distance(collision.gameObject.transform.position, playerTransform.position));
         if (collision.gameObject.tag == "Food" && Vector3.Distance(collision.gameObject.transform.position, playerTransform.position) <= losePointDistance)
         {
             StartCoroutine(FlashSprite());

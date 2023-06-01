@@ -19,6 +19,7 @@ public class SpawnerTime : MonoBehaviour
         {
             float spawTime = Random.Range(minSpawnTime, maxSpawTime);
             yield return new WaitForSeconds(spawTime);
+            
             Instantiate(prefab, transform.position, transform.rotation);
         }
     }

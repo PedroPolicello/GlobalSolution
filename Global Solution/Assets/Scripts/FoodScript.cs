@@ -5,13 +5,19 @@ using UnityEngine;
 public class FoodScript : MonoBehaviour
 {
     private Rigidbody2D foodRig;
+    private SpriteRenderer foodSprite;
     [SerializeField] float minForce;
     [SerializeField] float maxForce;
+
+    [SerializeField] private Sprite[] foodSprites;
 
     void Awake()
     {
         foodRig = GetComponent<Rigidbody2D>();
+        foodSprite = GetComponent<SpriteRenderer>();
+        SetSprite();
     }
+
 
     void Start()
     {
@@ -29,4 +35,11 @@ public class FoodScript : MonoBehaviour
 
         Destroy(gameObject);
     }
+    private void SetSprite()
+    {
+        int randomSprite = Random.Range(0, foodSprites.Length);
+        foodSprite.sprite = foodSprites[randomSprite];
+    }
+
+
 }

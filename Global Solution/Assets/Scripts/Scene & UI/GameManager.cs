@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI totalScoreText;
     [SerializeField] private TextMeshProUGUI lifeText;
+    [SerializeField] private TextMeshProUGUI gameOverScoreText;
+    [SerializeField] private GameObject gameOverMenu;
 
     [Header("Scores")]
     private int playerScore = 0;
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour
     private int totalScore = 0;
     private int currentLife;
     private int maxLife = 3;
+    private int gameOverScore = 0;
 
     void Awake()
     {
@@ -45,7 +48,7 @@ public class GameManager : MonoBehaviour
     public void LoseScore()
     {
         playerScore -= 3;
-        if(playerScore <=0)
+        if (playerScore <= 0)
         {
             playerScore = 0;
         }
@@ -65,10 +68,13 @@ public class GameManager : MonoBehaviour
     {
         currentLife--;
         UpdatePlayerLife(currentLife);
-        
+
         if (currentLife <= 0)
         {
-            SceneManager.LoadScene("GameOver");
+            gameOverScore = totalScore;
+            Time.timeScale = 0;
+            gameOverMenu.SetActive(true);
+            UpdateGameOverScore(gameOverScore);
         }
     }
 
@@ -79,7 +85,7 @@ public class GameManager : MonoBehaviour
         lifeText.text = currentLife.ToString();
     }
 
-    public void UpdatePlayerScore(int  playerScore)
+    public void UpdatePlayerScore(int playerScore)
     {
         scoreText.text = playerScore.ToString();
     }
@@ -87,5 +93,10 @@ public class GameManager : MonoBehaviour
     public void UpdateTotalScore(int totalScore)
     {
         totalScoreText.text = totalScore.ToString();
+    }
+
+    public void UpdateGameOverScore(int gameOverScore)
+    {
+        gameOverScoreText.text = gameOverScore.ToString();
     }
 }
