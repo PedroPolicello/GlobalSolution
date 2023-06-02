@@ -49,15 +49,6 @@ public class PlayerScript : MonoBehaviour
         playerTransform.Translate(new Vector3(moveX, 0, 0) * speed * Time.deltaTime);
         playerAnimator.SetFloat("isWalking", Mathf.Abs(moveX));
 
-        if ( moveX > 0)
-        {
-            playerSprite.flipX=false;
-        }
-        else
-        {
-            playerSprite.flipX = true;
-        }
-
         if (Input.GetButtonDown("Fire1"))
         {
             StartCoroutine(Dash());
@@ -95,7 +86,8 @@ public class PlayerScript : MonoBehaviour
     //TRIGGER
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        //print(Vector3.Distance(collision.gameObject.transform.position, playerTransform.position));
+        if (collision.gameObject.tag == "Enemy" && Vector3.Distance(collision.gameObject.transform.position, playerTransform.position) <= 5)
         {
             StartCoroutine(FlashSprite());
             GameManager.instance.PlayerLife();

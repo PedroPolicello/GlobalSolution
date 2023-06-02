@@ -12,8 +12,10 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI totalScoreText;
     [SerializeField] private TextMeshProUGUI lifeText;
+    [SerializeField] private TextMeshProUGUI lifeNumber;
+    [SerializeField] private TextMeshProUGUI totalScoreText;
+    [SerializeField] private TextMeshProUGUI totalScoreNumber;
     [SerializeField] private TextMeshProUGUI gameOverScoreText;
     [SerializeField] private GameObject gameOverMenu;
 
@@ -74,6 +76,12 @@ public class GameManager : MonoBehaviour
             gameOverScore = totalScore;
             Time.timeScale = 0;
             gameOverMenu.SetActive(true);
+            scoreText.gameObject.SetActive(false);
+            lifeText.gameObject.SetActive(false);
+            lifeNumber.gameObject.SetActive(false);
+            totalScoreText.gameObject.SetActive(false);
+            totalScoreNumber.gameObject.SetActive(false);
+
             UpdateGameOverScore(gameOverScore);
         }
     }
@@ -82,7 +90,7 @@ public class GameManager : MonoBehaviour
     //Updates
     public void UpdatePlayerLife(int currentLife)
     {
-        lifeText.text = currentLife.ToString();
+        lifeNumber.text = currentLife.ToString();
     }
 
     public void UpdatePlayerScore(int playerScore)
@@ -92,7 +100,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateTotalScore(int totalScore)
     {
-        totalScoreText.text = totalScore.ToString();
+        totalScoreNumber.text = totalScore.ToString();
     }
 
     public void UpdateGameOverScore(int gameOverScore)
