@@ -10,18 +10,18 @@ public class PlayerScript : MonoBehaviour
     private SpriteRenderer playerSprite;
     private Animator playerAnimator;
     [SerializeField] private Transform foodTransform;
-    public bool flipX;
 
     [Header("Player Movement")]
     [SerializeField] private int speed;
     [SerializeField] private int jumpForce;
-    private bool onFloor = true;
     [SerializeField] private float losePointDistance;
+    private bool onFloor = true;
 
 
     //Dash
     private int normalSpeed;
     private bool canDash = true;
+    [SerializeField] private AudioSource dashSound;
 
     //Singleton
     public static PlayerScript instance;
@@ -109,6 +109,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && canDash)
         {
+            dashSound.Play();
             speed *= 2;
             yield return new WaitForSeconds(.3f);
             speed = normalSpeed;

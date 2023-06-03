@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI totalScoreNumber;
     [SerializeField] private TextMeshProUGUI gameOverScoreText;
     [SerializeField] private GameObject gameOverMenu;
+    [SerializeField] private GameObject youAreFullText;
 
     [Header("Scores")]
     private int playerScore = 0;
@@ -26,6 +27,14 @@ public class GameManager : MonoBehaviour
     private int currentLife;
     private int maxLife = 3;
     private int gameOverScore = 0;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource collectSound;
+    [SerializeField] private AudioSource carCrash;
+    [SerializeField] private AudioSource backgroundMenu;
+    [SerializeField] private AudioSource backgroundGameplay;
+    [SerializeField] private AudioSource backgroundGameOver;
+
 
     void Awake()
     {
@@ -38,11 +47,12 @@ public class GameManager : MonoBehaviour
 
     public void PlayerScore()
     {
+        collectSound.Play();
         playerScore += 5;
         if (playerScore >= 30)
         {
             playerScore = 30;
-            print("YOU ARE FULL");
+            youAreFullText.gameObject.SetActive(true);
         }
         UpdatePlayerScore(playerScore);
     }
@@ -62,6 +72,7 @@ public class GameManager : MonoBehaviour
         totalScore = ongScore + playerScore;
         ongScore = totalScore;
         playerScore = 0;
+        youAreFullText.gameObject.SetActive(false);
         UpdateTotalScore(totalScore);
         UpdatePlayerScore(playerScore);
     }
@@ -69,6 +80,7 @@ public class GameManager : MonoBehaviour
     public void PlayerLife()
     {
         currentLife--;
+        carCrash.Play();
         UpdatePlayerLife(currentLife);
 
         if (currentLife <= 0)
