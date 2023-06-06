@@ -31,10 +31,8 @@ public class GameManager : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource collectSound;
     [SerializeField] private AudioSource carCrash;
-    [SerializeField] private AudioSource backgroundMenu;
     [SerializeField] private AudioSource backgroundGameplay;
     [SerializeField] private AudioSource backgroundGameOver;
-
 
     void Awake()
     {
@@ -64,6 +62,11 @@ public class GameManager : MonoBehaviour
         {
             playerScore = 0;
         }
+
+        if (playerScore < 30)
+        {
+            youAreFullText.gameObject.SetActive(false);
+        }
         UpdatePlayerScore(playerScore);
     }
 
@@ -88,6 +91,8 @@ public class GameManager : MonoBehaviour
             gameOverScore = totalScore;
             Time.timeScale = 0;
             gameOverMenu.SetActive(true);
+            backgroundGameplay.Pause();
+            backgroundGameOver.Play();
             scoreText.gameObject.SetActive(false);
             lifeText.gameObject.SetActive(false);
             lifeNumber.gameObject.SetActive(false);
