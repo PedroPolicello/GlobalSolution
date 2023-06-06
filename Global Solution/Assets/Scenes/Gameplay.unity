@@ -3433,7 +3433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1839269471
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4239,8 +4239,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -90}
-  m_SizeDelta: {x: 911.4333, y: 536.0902}
+  m_AnchoredPosition: {x: 0, y: -26.2529}
+  m_SizeDelta: {x: 752.9268, y: 408.596}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2107740453
 MonoBehaviour:
@@ -4275,8 +4275,6 @@ MonoBehaviour:
     is the one you get when you deliver the food.
 
 
-
-
     HINT: You can dash using
     the left mouse button.'
   m_isRightToLeft: 0
@@ -4305,11 +4303,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30.8
+  m_fontSize: 27.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 10.5
+  m_fontSizeMin: 9.65
   m_fontSizeMax: 48.2
   m_fontStyle: 0
   m_HorizontalAlignment: 2
