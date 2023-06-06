@@ -71,7 +71,7 @@ public class PlayerScript : MonoBehaviour
         onFloor = true;
         playerAnimator.SetBool("isJumping", false);
         print(Vector3.Distance(collision.gameObject.transform.position, playerTransform.position));
-        if (collision.gameObject.tag == "Food" && Vector3.Distance(collision.gameObject.transform.position, playerTransform.position) <= losePointDistance)
+        if (collision.gameObject.tag == "Food" && (Vector3.Distance(collision.gameObject.transform.position, playerTransform.position) <= losePointDistance))
         {
             StartCoroutine(FlashSprite());
             GameManager.instance.PlayerLife();
